@@ -2,6 +2,11 @@ body {
   font-family: 'Noto Sans', sans-serif;
 }
 
+.centerImage
+{
+ text-align:center;
+ display:block;
+}
 
 .footer .icon-link {
     font-size: 25px;
