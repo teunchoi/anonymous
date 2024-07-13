@@ -186,7 +186,7 @@
       <br>
       <br>
       <div class="centerImage">
-        <img src="./static/images/image.png" alt="Visualization" width="60%">
+        <img src="./static/images/figure2.png" alt="Visualization" width="60%">
       </div>
       <br>
       <br>
@@ -266,31 +266,20 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We present the first method capable of photorealistically reconstructing a non-rigidly
-            deforming scene using photos/videos captured casually from mobile phones.
-          </p>
-          <p>
-            Our approach augments neural radiance fields
-            (NeRF) by optimizing an
-            additional continuous volumetric deformation field that warps each observed point into a
-            canonical 5D NeRF.
-            We observe that these NeRF-like deformation fields are prone to local minima, and
-            propose a coarse-to-fine optimization method for coordinate-based models that allows for
-            more robust optimization.
-            By adapting principles from geometry processing and physical simulation to NeRF-like
-            models, we propose an elastic regularization of the deformation field that further
-            improves robustness.
-          </p>
-          <p>
-            We show that <span class="dnerf">Nerfies</span> can turn casually captured selfie
-            photos/videos into deformable NeRF
-            models that allow for photorealistic renderings of the subject from arbitrary
-            viewpoints, which we dub <i>"nerfies"</i>. We evaluate our method by collecting data
-            using a
-            rig with two mobile phones that take time-synchronized photos, yielding train/validation
-            images of the same pose at different viewpoints. We show that our method faithfully
-            reconstructs non-rigidly deforming scenes and reproduces unseen views with high
-            fidelity.
+            In machine learning, disentangled representation learning (DRL) aims to achieve independent and meaningful representations to enhance interpretability and improve downstream task performance. 
+            Defining and annotating complex ground truth factors is challenging, so unsupervised learning methodologies are common. 
+            In unsupervised DRL, leveraging the rich latent space of generative models and providing appropriate inductive biases is crucial. 
+            Recent research has explored DRL using diffusion models (DMs), central in
+            generative modeling due to their high-quality images and rich latent space, potentially surpassing variational autoencoders (VAEs). 
+            Previous studies on DM for DRL focused on the independence of representation elements. 
+            Here, we highlight the importance of disentangling features within elements. 
+            Disentangling features within an element allows it to better learn the ground truth factor, enhancing interpretability and increasing mutual information between elements and factors. 
+            We propose dynamic Gaussian anchoring (DyGA) to achieve this. 
+            DyGA dynamically anchors features to estimated centroids, effectively disentangling features within elements. 
+            For DMs to replace VAEs, it is essential to observe the spaces from which representations are extracted in each model. 
+            In VAEs, the image generator entirely depends on the representation, whereas in DMs, the representation merely acts as a condition. 
+            Considering this structural difference, we propose skip dropout (SD) to facilitate the training of the module that extracts representations. 
+            Our proposed DyGA and SD are applicable to DMs for DRL and have shown superior performance improvements over existing models.
           </p>
         </div>
       </div>
