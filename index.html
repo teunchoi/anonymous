@@ -2,10 +2,10 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Disentangled Representation Learning for Diffusion Models via Dynamic Gaussian Anchoring">
+  <meta name="description" content="Disentangling Disentangled Representations: Towards Improved Latent Units via Diffusion Models">
   <!-- <meta name="keywords" content="Nerfies, D-NeRF, NeRF"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Disentangled Representation Learning for Diffusion Models via Dynamic Gaussian Anchoring</title>
+  <title>Disentangling Disentangled Representations: Towards Improved Latent Units via Diffusion Models</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -88,7 +88,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-2 publication-title">Disentangled Representation Learning for Diffusion Models via Dynamic Gaussian Anchoring</h1>
+          <h1 class="title is-2 publication-title">Disentangling Disentangled Representations: Towards Improved Latent Units via Diffusion Models</h1>
           <div class="is-size-4 publication-authors">
             <strong><span class="author-block">Anonymous</span></strong>
           </div>  
@@ -186,7 +186,7 @@
       <br>
       <br>
       <div class="centerImage">
-        <img src="./static/images/figure3.png" alt="Visualization" width="50%">
+        <img src="./static/images/figure1.png" alt="Visualization" width="50%">
       </div>
       <br>
       <br>
@@ -267,20 +267,8 @@
         <br>
         <div class="content has-text-justified">
           <p style="font-size: 13px;">
-            In machine learning, disentangled representation learning (DRL) aims to achieve independent and meaningful representations to enhance interpretability and improve downstream task performance. 
-            Defining and annotating complex ground truth factors is challenging, so unsupervised learning methodologies are common. 
-            In unsupervised DRL, leveraging the rich latent space of generative models and providing appropriate inductive biases is crucial. 
-            Recent research has explored DRL using diffusion models (DMs), central in
-            generative modeling due to their high-quality images and rich latent space, potentially surpassing variational autoencoders (VAEs). 
-            Previous studies on DM for DRL focused on the independence of representation elements. 
-            Here, we highlight the importance of disentangling features within elements. 
-            Disentangling features within an element allows it to better learn the ground truth factor, enhancing interpretability and increasing mutual information between elements and factors. 
-            We propose dynamic Gaussian anchoring (DyGA) to achieve this. 
-            DyGA dynamically anchors features to estimated centroids, effectively disentangling features within elements. 
-            For DMs to replace VAEs, it is essential to observe the spaces from which representations are extracted in each model. 
-            In VAEs, the image generator entirely depends on the representation, whereas in DMs, the representation merely acts as a condition. 
-            Considering this structural difference, we propose skip dropout (SD) to facilitate the training of the module that extracts representations. 
-            Our proposed DyGA and SD are applicable to DMs for DRL and have shown superior performance improvements over existing models.
+            Disentangled representation learning (DRL) aims to break down observed data into core intrinsic factors, gaining a profound understanding of the data. In real-world scenarios, manually defining and labeling these factors are non-trivial, making unsupervised methods attractive. Recently, there have been limited explorations of utilizing diffusion models (DMs), which are already mainstream in generative modeling, for unsupervised DRL. They implement their own inductive bias to ensure that each latent unit input to the DM expresses only one distinct factor. In this context, we design \textbf{Dynamic Gaussian Anchoring} to enforce attribute-separated latent units for more interpretable DRL. This unconventional inductive bias explicitly delineates the decision boundaries between attributes while also promoting the independence among latent units. Additionally, we also propose \textbf{Skip Dropout} technique, which easily modifies the denoising U-Net to be more DRL-friendly, addressing its uncooperative nature with the disentangling feature extractor. Our methods, which carefully consider the latent unit semantics and the distinct DM structure, enhance the practicality of DM-based disentangled representations, demonstrating state-of-the-art disentanglement performance on both synthetic and real data, as well as advantages in downstream tasks.
+
           </p>
         </div>
       </div>
@@ -289,7 +277,7 @@
 <br>
 <br>
 <br>
-    <!-- Paper video. -->
+    <!-- Paper video.
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Video</h2>
@@ -299,10 +287,32 @@
         </div>
       </div>
     </div>
-    <!--/ Paper video. -->
-  </div>
+  </div> -->
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Method. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Motivation</h2>
+        <br>
+        <h4 class="title is-4">Visualization of Latent Units</h4>
+          <div class="content has-text-justified">
+            <br>
+            <div class="centerImage">
+              <img src="./static/images/figure1.png" alt="pipeline" width="100%">
+            </div>
+            <br>
+            <p style="font-size: 13px;">
+              Figure 1. Visualization of latent units in EncDiff and Ours. The top figures visualize the latent unit representing object color using the dimensionality reduction method PaCMAP [23] for multiple data points. The bottom figures show the results of conditional generation of data by sampling the latent unit from the blue and red regions, respectively. (a) In EncDiff [61], the boundary between color regions is ambiguous, so a latent unit representing red can be sampled even in the blue region, and vice versa. (b) Using our proposed method, we achieve an interpretable latent unit by clearly defining the boundaries between attributes, ensuring that only one color appears in each color region
+            </p>
+          </div>
+      </div>
+    </div>
+  </div>
+    <!--/ Method. -->
+</section>
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -319,37 +329,9 @@
             </div>
             <br>
             <p style="font-size: 13px;">
-              Figure 2. Training Framework with proposed methods. 
-              (a) During the diffusion model training, the features generated by the feature extractor are shifted towards the mean direction of the Gaussian for each feature unit based on the selected anchor, becoming the condition for the diffusion model. To maximize the use of features in the diffusion U-Net, a skip dropout strategy is employed. 
-              (b) The process of anchoring Gaussian distributions involves: i) initializing the Gaussian mixture, ii) performing HDDC using the EM algorithm, iii) adjusting the number of Gaussians by splitting them according to criteria, and iv) filtering out unnecessary Gaussians.
+              Figure 2. Training framework with proposed methods. (a) During the diffusion model training, the features generated by the feature extractor are shifted towards the mean direction of the Gaussian for each feature unit based on the selected anchor, becoming the condition for the diffusion model. To ensure the diffusion U-Net effectively utilizes the conditions created by the feature extractor, a skip dropout strategy is employed. (b) The process of anchoring Gaussian distributions involves: i) initializing the Gaussian mixture, ii) performing HDDC using the EM algorithm, iii) adjusting the number of Gaussians by splitting them according to criteria, and iv) filtering out unnecessary Gaussians.
             </p>
           </div>
-          <!-- <h4 class="title is-4">DyGA</h4>
-          <div class="content has-text-justified">
-            <br>
-            <div class="centerImage">
-              <img src="./static/images/figure2.png" alt="figure" width="100%">
-            </div>
-            <br>
-            <p style="font-size: 13px;">
-              caption caption caption caption caption caption caption caption caption caption caption caption caption caption     
-            </p>
-
-          </div>
-          <br>
-          <h4 class="title is-4">Skip Dropout</h4>
-          <div class="content has-text-justified">
-            <br>
-            <div class="centerImage">
-              <img src="./static/images/figure2.png" alt="figure" width="100%">
-            </div>
-            <br>
-            <p style="font-size: 13px;">
-              caption caption caption caption caption caption caption caption caption caption caption caption caption caption     
-            </p>
-
-          </div>
-          <br> -->
       </div>
     </div>
   </div>
@@ -363,7 +345,21 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Visualization</h2>
         <br>
-        <h4 class="title is-4">Attention Map</h4>
+        <h4 class="title is-4">Latent Interchange</h4>
+          <div class="content has-text-justified">
+            <br>
+            <div class="centerImage">
+              <img src="./static/images/figure3.png" alt="pipeline" width="70%">
+            </div>
+            <br>
+            <br>
+            <p style="font-size: 13px;">
+              Figure 3. Latent interchange results. This figure shows the results of conditional generation using latent units as the condition, where a single latent unit of the source image is replaced with a latent unit from the target image. The 1st and 2nd rows represent the source image and target image, respectively. The 3rd to 6th rows show the source image with its attribute (e.g., Floor hue, Camera angle) changed to that of the target. (left) represents the Shapes3D dataset, while (right) represents the MPI3D dataset.            </p>
+
+          </div>
+          <br>
+          <br>
+          <h4 class="title is-4">Attention Map</h4>
           <div class="content has-text-justified">
             <br>
             <div class="centerImage">
@@ -372,26 +368,7 @@
             <br>
             <br>
             <p style="font-size: 13px;">
-              Figure 2. Training Framework with proposed methods. 
-              (a) During the diffusion model training, the features generated by the feature extractor are shifted towards the mean direction of the Gaussian for each feature unit based on the selected anchor, becoming the condition for the diffusion model. To maximize the use of features in the diffusion U-Net, a skip dropout strategy is employed. 
-              (b) The process of anchoring Gaussian distributions involves: i) initializing the Gaussian mixture, ii) performing HDDC using the EM algorithm, iii) adjusting the number of Gaussians by splitting them according to criteria, and iv) filtering out unnecessary Gaussians.
-            </p>
-
-          </div>
-          <br>
-          <br>
-          <h4 class="title is-4">Latent Units</h4>
-          <div class="content has-text-justified">
-            <br>
-            <div class="centerImage">
-              <img src="./static/images/figure1.png" alt="pipeline" width="70%">
-            </div>
-            <br>
-            <br>
-            <p style="font-size: 13px;">
-              Figure 2. Training Framework with proposed methods. 
-              (a) During the diffusion model training, the features generated by the feature extractor are shifted towards the mean direction of the Gaussian for each feature unit based on the selected anchor, becoming the condition for the diffusion model. To maximize the use of features in the diffusion U-Net, a skip dropout strategy is employed. 
-              (b) The process of anchoring Gaussian distributions involves: i) initializing the Gaussian mixture, ii) performing HDDC using the EM algorithm, iii) adjusting the number of Gaussians by splitting them according to criteria, and iv) filtering out unnecessary Gaussians.
+              Figure 4. Attention map visualizations on Shapes3D and MPI3D-toy datasets. This allows us to verify how well the image locations highlighted by the attention maps correspond to the factors represented by the latent units. In both datasets, the denoising network focuses on the positions associated with the factors represented by the latent units (e.g., object size, object shape).
             </p>
 
           </div>
@@ -401,47 +378,6 @@
     <!--/ Method. -->
 </section>
 
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <!-- Method. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Qualitative Results</h2>
-        <br>
-        <h4 class="title is-4">1</h4>
-          <div class="content has-text-justified">
-            <br>
-            <div class="centerImage">
-              <img src="./static/images/figure2.png" alt="pipeline" width="100%">
-            </div>
-            <br>
-            <br>
-            <p style="font-size: 13px;">
-              Figure 2. Training Framework with proposed methods. 
-              (a) During the diffusion model training, the features generated by the feature extractor are shifted towards the mean direction of the Gaussian for each feature unit based on the selected anchor, becoming the condition for the diffusion model. To maximize the use of features in the diffusion U-Net, a skip dropout strategy is employed. 
-              (b) The process of anchoring Gaussian distributions involves: i) initializing the Gaussian mixture, ii) performing HDDC using the EM algorithm, iii) adjusting the number of Gaussians by splitting them according to criteria, and iv) filtering out unnecessary Gaussians.
-            </p>
-          </div>
-          <br>
-          <br>
-          <h4 class="title is-4">2</h4>
-          <div class="content has-text-justified">
-            <br>
-            <div class="centerImage">
-              <img src="./static/images/figure2.png" alt="figure" width="100%">
-            </div>
-            <br>
-            <br>
-            <p style="font-size: 13px;">
-              caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption caption     
-            </p>
-          </div>
-      </div>
-    </div>
-  </div>
-    <!--/ Method. -->
-</section>
 
 <section class="section">
   <div class="container is-max-desktop">
@@ -450,32 +386,33 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">Quantitative Results</h2>
         <br>
-        <h4 class="title is-4">1</h4>
+        <h4 class="title is-4">Table 1</h4>
           <div class="content has-text-justified">
             <br>
             <div class="centerImage">
-              <img src="./static/images/figure2.png" alt="pipeline" width="100%">
+              <img src="./static/images/table1.png" alt="pipeline" width="100%">
             </div>
             <br>
             <p style="font-size: 13px;">
-              Figure 2. Training Framework with proposed methods. 
-              (a) During the diffusion model training, the features generated by the feature extractor are shifted towards the mean direction of the Gaussian for each feature unit based on the selected anchor, becoming the condition for the diffusion model. To maximize the use of features in the diffusion U-Net, a skip dropout strategy is employed. 
-              (b) The process of anchoring Gaussian distributions involves: i) initializing the Gaussian mixture, ii) performing HDDC using the EM algorithm, iii) adjusting the number of Gaussians by splitting them according to criteria, and iv) filtering out unnecessary Gaussians.
+              Table 1. Comparison with baselines on the FactorVAE score and DCI disentanglement metrics (mean ± std). Bold indicates the best, and underline indicates the second best.
             </p>
           </div>
           <br>
           <br>
-          <h4 class="title is-4">2</h4>
+          <h4 class="title is-4">Table 2</h4>
           <div class="content has-text-centered">
             <br>
             <div class="centerImage">
-              <img src="./static/images/figure2.png" alt="figure" width="100%">
+              <img src="./static/images/table2.png" alt="figure" width="100%">
             </div>
             <br>
             <p style="font-size: 13px;">
-              caption caption caption caption caption caption caption caption caption caption caption 
+              Table 2. Comparison of disentanglement and generation quality using the TAD and FID metrics (mean ± std) on the real-worlddataset CelebA. 
             </p>
           </div>
+          <br>
+          <br>
+          <br>
       </div>
     </div>
   </div>
