@@ -267,7 +267,7 @@
         <br>
         <div class="content has-text-justified">
           <p style="font-size: 13px;">
-            Disentangled representation learning (DRL) aims to break down observed data into core intrinsic factors, gaining a profound understanding of the data. In real-world scenarios, manually defining and labeling these factors are non-trivial, making unsupervised methods attractive. Recently, there have been limited explorations of utilizing diffusion models (DMs), which are already mainstream in generative modeling, for unsupervised DRL. They implement their own inductive bias to ensure that each latent unit input to the DM expresses only one distinct factor. In this context, we design \textbf{Dynamic Gaussian Anchoring} to enforce attribute-separated latent units for more interpretable DRL. This unconventional inductive bias explicitly delineates the decision boundaries between attributes while also promoting the independence among latent units. Additionally, we also propose \textbf{Skip Dropout} technique, which easily modifies the denoising U-Net to be more DRL-friendly, addressing its uncooperative nature with the disentangling feature extractor. Our methods, which carefully consider the latent unit semantics and the distinct DM structure, enhance the practicality of DM-based disentangled representations, demonstrating state-of-the-art disentanglement performance on both synthetic and real data, as well as advantages in downstream tasks.
+            Disentangled representation learning (DRL) aims to break down observed data into core intrinsic factors for a profound understanding of the data. In real-world scenarios, manually defining and labeling these factors are non-trivial, making unsupervised methods attractive. Recently, there have been limited explorations of utilizing diffusion models (DMs), which are already mainstream in generative modeling, for unsupervised DRL. They implement their own inductive bias to ensure that each latent unit input to the DM expresses only one distinct factor. In this context, we design Dynamic Gaussian Anchoring to enforce attribute-separated latent units for more interpretable DRL. This unconventional inductive bias explicitly delineates the decision boundaries between attributes while also promoting the independence among latent units. Additionally, we also propose Skip Dropout technique, which easily modifies the denoising U-Net to be more DRL-friendly, addressing its uncooperative nature with the disentangling feature extractor. Our methods, which carefully consider the latent unit semantics and the distinct DM structure, enhance the practicality of DM-based disentangled representations, demonstrating state-of-the-art disentanglement performance on both synthetic and real data, as well as advantages in downstream tasks.
           </p>
         </div>
       </div>
@@ -301,8 +301,7 @@
             </div>
             <br>
             <p style="font-size: 13px;">
-              Figure 1. Visualization of latent units in EncDiff and Ours. The top figures visualize the latent unit representing object color using the dimensionality reduction method PaCMAP [23] for multiple data points. The bottom figures show the results of conditional generation of data by sampling the latent unit from the blue and red regions, respectively. (a) In EncDiff [61], the boundary between color regions is ambiguous, so a latent unit representing red can be sampled even in the blue region, and vice versa. (b) Using our proposed method, we achieve an interpretable latent unit by clearly defining the boundaries between attributes, ensuring that only one color appears in each color region
-            </p>
+              Figure 1. Visualization of latent units in EncDiff and Ours. The top figures visualize the latent unit representing object color using the dimensionality reduction method PaCMAP for multiple data points. The bottom figures show the results of conditional generation of data by sampling the latent unit from the blue and red regions, respectively. (a) In EncDiff, the boundary between color regions is ambiguous, so a latent unit representing red can be sampled even in the blue region, and vice versa. (b) Using our proposed method, we achieve an interpretable latent unit by clearly defining the boundaries between attributes, ensuring that only one color appears in each color region.            </p>
             <br>
             <br>
           </div>
@@ -354,8 +353,7 @@
             <br>
             <br>
             <p style="font-size: 13px;">
-              Figure 3. Latent interchange results. This figure shows the results of conditional generation using latent units as the condition, where a single latent unit of the source image is replaced with a latent unit from the target image. The 1st and 2nd rows represent the source image and target image, respectively. The 3rd to 6th rows show the source image with its attribute (e.g., Floor hue, Camera angle) changed to that of the target. (left) represents the Shapes3D dataset, while (right) represents the MPI3D dataset.            </p>
-
+              Figure 3. Latent interchange results. This figure shows the results of conditional generation using latent units as the condition, where a single latent unit of the source image is replaced with a latent unit from the target image. The first and second rows represent the source image and target image, respectively. The third to sixth rows show the source image with its attribute (e.g., Floor hue, Camera angle) changed to that of the target. (left) represents the Shapes3D dataset, while (right) represents the MPI3D dataset.
           </div>
           <br>
           <br>
@@ -368,7 +366,7 @@
             <br>
             <br>
             <p style="font-size: 13px;">
-              Figure 4. Attention map visualizations on Shapes3D and MPI3D-toy datasets. This allows us to verify how well the image locations highlighted by the attention maps correspond to the factors represented by the latent units. In both datasets, the denoising network focuses on the positions associated with the factors represented by the latent units (e.g., object size, object shape).
+              Figure 4. Attention map visualizations on Shapes3D and MPI3D-toy datasets. These results allow us to verify how well the image regions highlighted by the attention maps correspond to the factors represented by the latent units. In both datasets, the denoising network focuses on the proper positions associated with the factors represented by the latent units (e.g., object size).
             </p>
             <br>
             <br>
@@ -395,7 +393,7 @@
             </div>
             <br>
             <p style="font-size: 13px;">
-              Table 1. Comparison with baselines on the FactorVAE score and DCI disentanglement metrics (mean ± std). Bold indicates the best, and underline indicates the second best.
+              Table 1. Comparison with baselines on the FactorVAE score and DCI disentanglement metrics (mean ± std). Bold indicates the best, and underline indicates the second-best.
             </p>
           </div>
           <br>
@@ -408,7 +406,20 @@
             </div>
             <br>
             <p style="font-size: 13px;">
-              Table 2. Comparison of disentanglement and generation quality using the TAD and FID metrics (mean ± std) on the real-worlddataset CelebA. 
+              Table 2. Comparison of disentanglement and generation quality using the TAD and FID metrics (mean ± std) on the real-world dataset CelebA
+            </p>
+          </div>
+          <br>
+          <br>
+          <h4 class="title is-4">Table 3</h4>
+          <div class="content has-text-justified">
+            <br>
+            <div class="centerImage">
+              <img src="./static/images/table3_pp.png" alt="pipeline" width="60%">
+            </div>
+            <br>
+            <p style="font-size: 13px;">
+              Table 3. Table 3. Validation of our method’s effectiveness in DisDif
             </p>
           </div>
           <br>
